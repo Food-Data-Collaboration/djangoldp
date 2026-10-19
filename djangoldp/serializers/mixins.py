@@ -2,6 +2,7 @@ from copy import copy
 
 from django.conf import settings
 from django.db.models import QuerySet
+from django.db.models.manager import BaseManager
 from rest_framework.fields import empty
 
 from djangoldp.models import Model
@@ -129,6 +130,7 @@ class LDListMixin(RDFSerializerMixin):
             child_model = value.model
         user = self.context['request'].user
         id = self.compute_id(value)
+        value = value.all() if isinstance(value, BaseManager) else value
 
         is_container = True
         if getattr(self, 'parent', None):  # If we're in a nested container
