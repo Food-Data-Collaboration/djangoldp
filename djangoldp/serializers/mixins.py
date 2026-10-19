@@ -134,7 +134,7 @@ class LDListMixin(RDFSerializerMixin):
 
         is_container = True
         if getattr(self, 'parent', None):  # If we're in a nested container
-            if isinstance(value, QuerySet) and getattr(self, 'parent', None):
+            if isinstance(value, QuerySet):
                 value = self.filter_queryset(value, child_model)
 
             if getattr(self, 'field_name', None) is not None:
