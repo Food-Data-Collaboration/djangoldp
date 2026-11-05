@@ -164,7 +164,5 @@ OIDC_ACCESS_CONTROL_ALLOW_HEADERS = 'Content-Type, if-match, accept, authorizati
 # The minimum number of seconds a password reset link is valid for
 PASSWORD_RESET_TIMEOUT = 60 * 60 * 24 * 3
 
-DISABLE_LOCAL_OBJECT_FILTER = False
-
 GUARDIAN_AUTO_PREFETCH = True
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
