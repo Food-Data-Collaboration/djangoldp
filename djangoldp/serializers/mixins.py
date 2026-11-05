@@ -152,8 +152,9 @@ class LDListMixin(RDFSerializerMixin):
         if is_container:
             data = self.serialize_container(data, id, user, child_model)
 
-        GLOBAL_SERIALIZER_CACHE.set(getattr(child_model._meta, 'label'), id, cache_vary, data)
-        return GLOBAL_SERIALIZER_CACHE.get(getattr(child_model._meta, 'label'), id, cache_vary)
+        if self.with_cache:
+            GLOBAL_SERIALIZER_CACHE.set(child_model._meta.label, id, cache_vary, data)
+        return data
 
     def get_value(self, dictionary):
         try:
