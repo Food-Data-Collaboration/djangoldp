@@ -50,7 +50,7 @@ class LDPModelSerializerTestCase(TestCase):
         self.assertEqual(skills[1].title, "z") # updated
         self.assertEqual(skills[1].obligatoire, pre_existing_skill.obligatoire)
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/326
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/326
     '''
     def test_update_container_edit_and_new_resource_append(self):
         pre_existing_skill_a = Skill.objects.create(title="to keep", obligatoire="obligatoire", slug="slug1")
@@ -172,7 +172,7 @@ class LDPModelSerializerTestCase(TestCase):
         self.assertIs(another_job.skills.count(), 1)
         self.assertIs(Skill.objects.count(), 1)
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/344
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/344
     def test_update_container_mismatched_type_urlid(self):
         job = JobOffer.objects.create(title="job test")
         another_job = JobOffer.objects.create(title="job2")
@@ -190,7 +190,7 @@ class LDPModelSerializerTestCase(TestCase):
         serializer.is_valid(raise_exception=True)
         result = serializer.save()
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/345
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/345
     '''
     def test_update_container_mismatched_type_urlid_2(self):
         job = JobOffer.objects.create(title="job test")
@@ -211,7 +211,7 @@ class LDPModelSerializerTestCase(TestCase):
         # TODO: assert correct error is thrown
     '''
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/344
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/344
     def test_update_container_mismatched_type_urlid_external(self):
         job = JobOffer.objects.create(title="job test")
 
@@ -228,7 +228,7 @@ class LDPModelSerializerTestCase(TestCase):
         serializer.is_valid(raise_exception=True)
         result = serializer.save()
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/346
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/346
     '''def test_update_container_attach_nonexistent_local_resource(self):
         job = JobOffer.objects.create(title="job test")
 
@@ -253,7 +253,7 @@ class LDPModelSerializerTestCase(TestCase):
         self.assertEqual(Skill.objects.count(), 0)'''
 
     # CircleMember is different to Skill because it represents a many-to-many relationship via a through model
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/333
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/333
     '''def test_update_m2m_relationship_with_through_model_add_and_edit(self):
         circle = Circle.objects.create(name='test')
         pre_existing = CircleMember.objects.create(user=self.user, circle=circle, is_admin=False)
@@ -643,7 +643,7 @@ class LDPModelSerializerTestCase(TestCase):
         self.assertEqual(messages[1].text, "Message 2 UP")
         self.assertEqual(messages[2].text, "Message 3 NEW")
 
-    # TODO: variation on https://git.startinblox.com/djangoldp-packages/djangoldp/issues/344
+    # TODO: variation on https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/344
     '''def test_update_container_invalid_fk_reference_given(self):
         pass'''
 

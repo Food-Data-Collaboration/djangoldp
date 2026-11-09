@@ -248,7 +248,7 @@ class TestsInbox(APITestCase):
     #     self.assertEqual(Follower.objects.count(), 1)
     #     self._assert_follower_created(self.user.urlid, '') #TODO: replace with an existing model
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/250
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/250
     def test_add_activity_str_parameter(self):
         payload = self._get_activity_request_template("Add", "https://distant.com/somethingunknown/1/",
                                                       self._build_target_from_user(self.user))
@@ -502,7 +502,7 @@ class TestsInbox(APITestCase):
         self._assert_activity_created(response, prior_activity_count + 1)
         self.assertEqual(Follower.objects.count(), 0)
 
-    # TODO: test_remove_activity_project_using_target (https://git.startinblox.com/djangoldp-packages/djangoldp/issues/231)
+    # TODO: test_remove_activity_project_using_target (https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/231)
 
     # error behaviour - project does not exist on user
     def test_remove_activity_nonexistent_project(self):
@@ -658,4 +658,4 @@ class TestsInbox(APITestCase):
         self.assertEqual(response.status_code, 405)
 
     # TODO: GET inbox for specific resource - should return a list of activities sent to this inbox
-    # TODO: view to access outbox (https://git.startinblox.com/djangoldp-packages/djangoldp/issues/284)
+    # TODO: view to access outbox (https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/284)

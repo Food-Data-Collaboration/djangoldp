@@ -21,7 +21,7 @@ class Update(TestCase):
                                                          password='glass onion')
         self.client.force_authenticate(user=self.user)
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/326
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/326
     '''
     def test_update_container_append_resource(self):
         pre_existing_skill_a = Skill.objects.create(title="to keep", obligatoire="obligatoire", slug="slug1")
@@ -425,7 +425,7 @@ class Update(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.data['description'], "user update")
 
-    # unit tests for a specific bug: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/307
+    # unit tests for a specific bug: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/307
     def test_direct_boolean_field(self):
         profile = UserProfile.objects.create(user=self.user)
         setting = NotificationSetting.objects.create(user=profile, receiveMail=False)
@@ -545,7 +545,7 @@ class Update(TestCase):
         self.assertEqual(tasks[0].pk, pre_existing_task.pk)
         self.assertEqual(tasks[1].title, "tache 2")
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/333
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/333
     '''def test_update_container_nested_view(self):
         circle = Circle.objects.create(name='test')
         pre_existing = CircleMember.objects.create(user=self.user, circle=circle, is_admin=False)

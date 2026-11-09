@@ -140,7 +140,7 @@ class TestGET(APITestCase):
         self.assertEqual(response.data['@id'], 'http://happy-dev.fr/conversations/{}/message_set/'.format(conversation.pk))
         self.assertEqual(len(response.data['ldp:contains']), 1)
 
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/335
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/335
     #  test getting a route with multiple nested fields (/job-offers/X/skills/Y/)
     '''def test_get_twice_nested(self):
         job = JobOffer.objects.create(title="job", slug="slug1")

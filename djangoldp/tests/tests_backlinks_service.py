@@ -26,7 +26,7 @@ class TestsBacklinksService(APITestCase):
         urlid = 'https://distant.com/users/' + username
         return get_user_model().objects.create_user(username=username, email=email, password='test', urlid=urlid)
 
-    # TODO: inbox discovery (https://git.startinblox.com/djangoldp-packages/djangoldp/issues/233)
+    # TODO: inbox discovery (https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/233)
 
     @override_settings(SEND_BACKLINKS=True, DISABLE_OUTBOX='DEBUG')
     def test_local_object_with_distant_foreign_key(self):
@@ -45,7 +45,7 @@ class TestsBacklinksService(APITestCase):
         self.assertEqual(Activity.objects.all().count(), 2)
 
         # external user should no longer be following the object. A further update should not send an activity
-        # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/257
+        # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/257
         '''another_user = get_user_model().objects.create_user(username='test', email='test@test.com',
                                                             password='glass onion')
         local_circle.owner = another_user

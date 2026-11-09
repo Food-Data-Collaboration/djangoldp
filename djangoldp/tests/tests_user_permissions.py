@@ -38,7 +38,7 @@ class TestUserPermissions(UserPermissionsTestCase):
         # self.assertNotIn('delete', response.data['permissions'])
 
     # TODO: list - I do not have permission from the model, but I do have permission via a Group I am assigned
-    #  https://git.startinblox.com/djangoldp-packages/djangoldp/issues/291
+    #  https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/291
     '''def test_group_list_access(self):
         self.setUpGroup()
         dummy = PermissionlessDummy.objects.create()
@@ -195,7 +195,7 @@ class TestUserPermissions(UserPermissionsTestCase):
         pass
 
     # TODO: repeat of the above where it is authorized because I have permission through my Group
-    #  https://git.startinblox.com/djangoldp-packages/djangoldp/issues/291
+    #  https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/291
 
     def test_put_request_change_urlid_rejected(self):
         self.assertEqual(JobOffer.objects.count(), 1)
@@ -300,7 +300,7 @@ class TestUserPermissions(UserPermissionsTestCase):
         their_profile = UserProfile.objects.create(user=another_user, slug=another_user.username, description='about')
 
         response = self.client.patch('/userprofiles/{}/'.format(their_profile.slug))
-        # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/336
+        # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/336
         self.assertEqual(response.status_code, 403)
 
         self._make_self_superuser()
@@ -321,7 +321,7 @@ class TestUserPermissions(UserPermissionsTestCase):
         self.assertEqual(response.status_code, 204)
 
     # I have model (or object?) permissions. Attempt to make myself owner and thus upgrade my permissions
-    # TODO: https://git.startinblox.com/djangoldp-packages/djangoldp/issues/356/
+    # TODO: https://gitlab.com/sib-backup-temp/djangoldp/-/work_items/356/
     '''
     def test_hack_model_perms_privilege_escalation(self):
         another_user = get_user_model().objects.create_user(username='test', email='test@test.com', password='test')
