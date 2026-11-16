@@ -12,10 +12,9 @@ from djangoldp.activities.services import ActivityQueueService
 from djangoldp.models import Activity, Follower, ScheduledActivity, SiteSetting
 
 
-class DjangoLDPAdmin(GuardedModelAdmin):
+class CSVExportAdminMixin:
     '''
-    An admin model representing a federated object. Inherits from GuardedModelAdmin to provide Django-Guardian
-    object-level permissions
+    A mixin for providing generic CSV export functionality to the Django admin.
     '''
     actions = ['export_csv']
     export_fields = []
@@ -41,6 +40,13 @@ class DjangoLDPAdmin(GuardedModelAdmin):
         writer.writerow(headers)
         writer.writerows(queryset.values(*field_list))
         return response
+
+
+class DjangoLDPAdmin(CSVExportAdminMixin, GuardedModelAdmin):
+    '''
+    An admin model representing a federated object. Inherits from GuardedModelAdmin to provide Django-Guardian
+    object-level permissions
+    '''
 
 
 class DjangoLDPUserAdmin(UserAdmin, DjangoLDPAdmin):
