@@ -147,7 +147,7 @@ class Todo(Model):
 
 See "Custom Meta options" below to see some helpful ways you can tweak the behaviour of DjangoLDP
 
-Your model will be automatically detected and registered with an LDPViewSet and corresponding URLs, as well as being registered with the Django admin panel. If you register your model with the admin panel manually, make sure to extend djangoldp.DjangoLDPAdmin so that the model is registered with [Django-Guardian object permissions](https://django-guardian.readthedocs.io/en/stable/userguide/admin-integration.html). An alternative version which extends Django's `UserAdmin` is available as djangoldp.DjangoLDPUserAdmin
+Your model will be automatically detected and registered with an LDPViewSet and corresponding URLs, as well as being registered with the Django admin panel. If you register your model with the admin panel manually, make sure to extend djangoldp.DjangoLDPAdmin so that the model is registered with [Django-Guardian object permissions](https://django-guardian.readthedocs.io/en/stable/userguide/admin-integration.html). An alternative version which extends Django's `UserAdmin` is available as djangoldp.DjangoLDPUserAdmin. It is unlikely that you will need to, but it is possible to override the base admin class for *all* auto-registered models in DjangoLDP with the setting `LDP_BASE_ADMIN_CLASS`, for example `LDP_BASE_ADMIN_CLASS: "djangoldp.admin.DjangoLDPAdmin"`.
 
 #### Model Fields
 

@@ -42,8 +42,8 @@ class DjangoldpConfig(AppConfig):
 
         from django.conf import settings
         from django.contrib import admin
+        from django.utils.module_loading import import_string
 
-        from djangoldp.admin import DjangoLDPAdmin
         from djangoldp.models import Model
         from djangoldp.urls import get_all_non_abstract_subclasses
 
@@ -59,10 +59,13 @@ class DjangoldpConfig(AppConfig):
             except ModuleNotFoundError:
                 pass
 
+        default_admin_class = import_string(
+            getattr(settings, "LDP_BASE_ADMIN_CLASS", "djangoldp.admin.DjangoLDPAdmin")
+        )
         for model in get_all_non_abstract_subclasses(Model):
             if not admin.site.is_registered(model):
                 try:
-                    admin.site.register(model, DjangoLDPAdmin)
+                    admin.site.register(model, default_admin_class)
                 except TypeError as e:
                     logger.warning(
                         f"Encountered TypeError when registering model {model}: {e}"
