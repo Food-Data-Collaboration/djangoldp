@@ -1,6 +1,10 @@
+import logging
 import os
 
 from django.apps import AppConfig
+
+logger = logging.getLogger("djangoldp")
+
 
 class DjangoldpConfig(AppConfig):
     name = "djangoldp"
@@ -57,4 +61,9 @@ class DjangoldpConfig(AppConfig):
 
         for model in get_all_non_abstract_subclasses(Model):
             if not admin.site.is_registered(model):
-                admin.site.register(model, DjangoLDPAdmin)
+                try:
+                    admin.site.register(model, DjangoLDPAdmin)
+                except TypeError as e:
+                    logger.warning(
+                        f"Encountered TypeError when registering model {model}: {e}"
+                    )
